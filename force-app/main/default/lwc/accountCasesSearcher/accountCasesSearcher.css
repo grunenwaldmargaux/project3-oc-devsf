@@ -1,3 +1,12 @@
-/**
- * Created by William on 13/03/2024.
- */
+/* Styles appliqués uniquement aux éléments du composant */
+.sousTitre {
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+}
+
+.container {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #acdbf3;
+}

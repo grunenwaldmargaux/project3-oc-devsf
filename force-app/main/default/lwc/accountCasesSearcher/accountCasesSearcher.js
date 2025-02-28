@@ -10,7 +10,7 @@ const COLUMNS = [
 export default class AccountCaseSearchComponent extends LightningElement {
     @api recordId;
     @track cases;
-    @track error;
+    @track error = null;
     searchTerm = '';
     columns = COLUMNS;
 
@@ -21,11 +21,17 @@ export default class AccountCaseSearchComponent extends LightningElement {
     handleSearch() {
         findCasesBySubject({ accountId: this.recordId, subjectSearchTerm: this.searchTerm })
             .then(result => {
-                this.cases = result;
-                this.error = undefined;
+                if (result.length === 0) {  // Vérifie si la liste est vide
+                    this.error = 'Aucun Case trouvé pour ce compte.';
+                    this.cases = undefined;
+                } else {
+                    this.cases = result;
+                    this.error = null; // Efface l'erreur si des Cases sont trouvés
+                }
             })
             .catch(error => {
-                this.error = 'Une erreur est survenue lors de la recherche des cases.';
+                this.error = 'Une erreur est survenue lors de la recherche des Cases.';
+                this.cases = undefined;
             });
     }
 }

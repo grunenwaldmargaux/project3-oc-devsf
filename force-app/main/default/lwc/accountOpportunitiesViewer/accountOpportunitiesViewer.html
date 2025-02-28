@@ -1,20 +1,35 @@
 <template>
     <lightning-card title="Opportunités du Compte" icon-name="standard:opportunity">
-        <div class=slds-max-large-size_xx-large>
-            <lightning-button class="slds-m-bottom_small" label="Rafraîchir" onclick={handleRafraichir} variant="brand"></lightning-button>
-            <template if:false={opportunities}>
-                <lightning-datatable data={opportunities}
-                                     columns={columns}
-                                     key-field="Id"
-                                     class="slds-box slds-theme_default">
-                </lightning-datatable>
-            </template>
+        <div class="slds-p-around_medium">
+
+            <!-- Message d'erreur dynamique -->
             <template if:true={error}>
-                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_success" role="contentinfo">
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error slds-m-bottom_large">
                     <span class="slds-assistive-text">Erreur</span>
-                    <h2>Une erreur s'est produite lors du chargement des opportunités.</h2>
+                    <h2>{error}</h2> <!-- Affichage dynamique de l'erreur -->
                 </div>
             </template>
+
+            <!-- Tableau des opportunités -->
+            <template if:true={opportunities}>
+                <lightning-datatable 
+                    data={opportunities}
+                    columns={columns}
+                    key-field="Id"
+                    class="slds-theme_default slds-m-top_large">
+                </lightning-datatable>
+            </template>
+
+            <!-- Bouton Rafraîchir (toujours affiché) -->
+            <div class="slds-text-align_right slds-m-top_large">
+                <lightning-button 
+                    label="Rafraîchir" 
+                    onclick={handleRafraichir} 
+                    variant="brand">
+                </lightning-button>
+            </div>
+
         </div>
     </lightning-card>
 </template>
+

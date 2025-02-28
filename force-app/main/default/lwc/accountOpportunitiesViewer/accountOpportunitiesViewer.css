@@ -1,3 +1,13 @@
-/**
- * Created by William on 13/03/2024.
- */
+
+accountOpportunitiesViewer.sousTitre {
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+}
+
+accountOpportunitiesViewer.container {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f3f3f3;
+}
+
