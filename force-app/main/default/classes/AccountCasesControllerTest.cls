@@ -11,7 +11,7 @@ private class AccountCasesControllerTest {
         insert testAccount;
         testAccountId = testAccount.Id;
 
-        // Création de cas associés
+        // Création de cas 
         Case case1 = new Case(AccountId = testAccountId, Subject = 'Problème de connexion', Status = 'Open');
         Case case2 = new Case(AccountId = testAccountId, Subject = 'Erreur 404', Status = 'Closed');
         insert new List<Case>{case1, case2};
